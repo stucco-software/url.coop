@@ -3,10 +3,17 @@
   const prop = (key) => data.profile[`https://solidid.stucco.software/vocabulary#${key}`][0]['@value']
 </script>
 
+<svelte:head>
+  <title>{prop('displayName')} @ url.coop</title>
+  <meta name="description" content={prop('introduction')}>
+</svelte:head>
+
 <div class="bg">
   <div class="card">
     <figure>
-      <img src="https://stucco.software/favicon.png">
+      <img
+        alt="Profile Image for {prop('displayName')}"
+        src="https://stucco.software/favicon.png">
     </figure>
     <h1>{prop('displayName')}</h1>
     <p class="intro">{prop('introduction')}</p>
