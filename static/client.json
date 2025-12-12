@@ -1,0 +1,26 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/solid/oidc-context.jsonld"
+  ],
+  "client_id": "https://solidid.stucco.software/client.json",
+  "client_name": "SolidID",
+  "redirect_uris": [
+    "http://localhost:5173/auth/confirm",
+    "https://solidid.stucco.software/auth/confirm"
+  ],
+  "post_logout_redirect_uris": [
+    "http://localhost:5173",
+    "https://solidid.stucco.software"
+  ],
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "scope": "openid webid offline_access",
+  "response_types": [
+    "code"
+  ],
+  "token_endpoint_auth_method": "none",
+  "application_type": "web",
+  "require_auth_time": false
+}
