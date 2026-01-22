@@ -1,6 +1,6 @@
 <script>
   const { data } = $props()
-  const prop = (key) => data.profile[`https://solidid.stucco.software/vocabulary#${key}`][0]['@value']
+  const prop = (key) => data.profile[key] ? data.profile[key] : null
 </script>
 
 <svelte:head>
@@ -15,8 +15,12 @@
         alt="Profile Image for {prop('displayName')}"
         src="https://stucco.software/favicon.png">
     </figure>
+
     <h1>{prop('displayName')}</h1>
-    <p class="intro">{prop('introduction')}</p>
+    {#if prop('introduction')}
+      <p class="intro">{prop('introduction')}</p>
+    {/if}
+
   </div>
 
 </div>
