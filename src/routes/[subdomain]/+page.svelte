@@ -52,14 +52,7 @@
           {/if}
         {/if}
       </section>
-
-
     {/each}
-
-    <section>
-      <h2>User Defined Type</h2>
-      <a href="#">Whatever We Want This To Be</a>
-    </section>
 
     <footer>
       <a href="https://url.coop">url.coop</a>
