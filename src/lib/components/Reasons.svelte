@@ -22,7 +22,7 @@
     },
     {
       title: 'Built on open standards',
-      body: 'url.coop uses Solid and linked data under the hood. Your identity is portable — it works across any service that speaks the same protocols.'
+      body: 'url.coop uses open linked data under the hood. Your identity is portable, it works across any service.'
     },
     {
       title: 'Just your links',

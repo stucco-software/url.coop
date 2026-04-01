@@ -8,11 +8,11 @@
     },
     {
       title: 'Add your links',
-      body: 'Your name, a short bio, and links to wherever you are online. Social profiles, email, websites — whatever matters to you.'
+      body: 'Your name, a short bio, and links to wherever you are online.'
     },
     {
       title: 'Share your URL',
-      body: 'You get a page at url.coop/yourname. Put it in your bio, send it in a message, print it on a card.'
+      body: 'Get your onw page. Put it in your bio, send it in a message, print it on a card.'
     }
   ]
 </script>

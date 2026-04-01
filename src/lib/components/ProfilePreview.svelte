@@ -8,7 +8,7 @@
 
 <style>
   .preview {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 2 / 4;
     max-height: 36rem;
     border-radius: var(--lead-quarter);
     overflow: hidden;

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>url.coop — Links for everyone</title>
+  <link rel="stylesheet" href="../static/reset.css">
+  <link rel="stylesheet" href="../static/fonts.css">
+  <link rel="stylesheet" href="../static/var.css">
+  <link rel="stylesheet" href="../static/global.css">
+  <style>
+    /* V1: Centered, minimal, lots of air */
+    body {
+      background-color: var(--white);
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--lead-4) var(--lead-2);
+    }
+
+    .hero h1 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-4);
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .tagline {
+      font-family: var(--serif-stack);
+      font-size: var(--txt-2);
+      margin-top: var(--lead-1);
+      font-style: italic;
+    }
+
+    .hero .description {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-0);
+      max-width: 32rem;
+      margin-top: var(--lead-1);
+      text-wrap: balance;
+      line-height: 1.5;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: var(--lead-2);
+      padding: var(--lead-half) var(--lead-2);
+      background-color: var(--black);
+      color: var(--white);
+      font-family: var(--sans-stack);
+      font-size: var(--txt-0);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--lead-quarter);
+    }
+    .cta:visited {
+      color: var(--white);
+    }
+    .cta:hover,
+    .cta:focus {
+      background-color: var(--red);
+      color: var(--white);
+      outline: none;
+    }
+
+    section {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: var(--lead-4) var(--lead-2);
+    }
+
+    section h2 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: var(--lead-2);
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      counter-reset: steps;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      margin-bottom: var(--lead-2);
+    }
+
+    .steps li strong {
+      display: block;
+      font-family: var(--sans-stack);
+      font-size: var(--txt-1);
+      font-weight: 500;
+      margin-bottom: var(--lead-quarter);
+    }
+
+    .steps li strong::before {
+      content: counter(steps) ". ";
+      font-family: var(--mono-stack);
+    }
+
+    .reasons {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reasons li {
+      margin-bottom: var(--lead-2);
+      text-align: center;
+    }
+
+    .reasons li strong {
+      display: block;
+      font-family: var(--sans-stack);
+      font-size: var(--txt-1);
+      font-weight: 500;
+      margin-bottom: var(--lead-quarter);
+    }
+
+    .example {
+      text-align: center;
+      border-top: 1px solid var(--gray);
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .example a {
+      font-family: var(--mono-stack);
+      font-size: var(--txt-1);
+    }
+
+    .closing {
+      text-align: center;
+      padding: var(--lead-6) var(--lead-2);
+    }
+
+    .closing p {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      margin-bottom: var(--lead-2);
+    }
+
+    footer {
+      text-align: center;
+      padding: var(--lead-2);
+      font-size: var(--txt--1);
+      color: var(--dark-gray);
+      border-top: 1px solid var(--light-gray);
+    }
+
+    footer a {
+      color: var(--dark-gray);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>url.coop</h1>
+    <p class="tagline">Links for everyone.</p>
+    <p class="description">A personal link page you actually own. Built on open, decentralized identity.</p>
+    <a class="cta" href="https://id.stucco.software/account/create">Claim your page</a>
+  </div>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>
+        <strong>Sign up</strong>
+        Create a free account with Stucco ID. It takes a minute.
+      </li>
+      <li>
+        <strong>Add your links</strong>
+        Your name, a short bio, and links to wherever you are online. Social profiles, email, websites — whatever matters to you.
+      </li>
+      <li>
+        <strong>Share your URL</strong>
+        You get a page at url.coop/yourname. Put it in your bio, send it in a message, print it on a card.
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Why url.coop</h2>
+    <ul class="reasons">
+      <li>
+        <strong>Your data, your rules</strong>
+        Your profile lives on Stucco ID, a community-run identity provider. No ads. No tracking. No platform lock-in. You can move your data whenever you want.
+      </li>
+      <li>
+        <strong>Built on open standards</strong>
+        url.coop uses Solid and linked data under the hood. Your identity is portable — it works across any service that speaks the same protocols.
+      </li>
+      <li>
+        <strong>Just your links</strong>
+        One page. No algorithmic feed, no engagement tricks, no noise. A clean page with your name and your links.
+      </li>
+    </ul>
+  </section>
+
+  <section class="example">
+    <h2>See it in action</h2>
+    <p>Take a look at a live profile:</p>
+    <a href="https://url.coop/yves">url.coop/yves</a>
+  </section>
+
+  <div class="closing">
+    <p>Ready to claim yours?</p>
+    <a class="cta" href="https://id.stucco.software/account/create">Get started</a>
+  </div>
+
+  <footer>
+    A project by <a href="https://stucco.software">Stucco Software</a>.
+  </footer>
+
+</body>
+</html>

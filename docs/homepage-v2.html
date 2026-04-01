@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>url.coop — Links for everyone</title>
+  <link rel="stylesheet" href="../static/reset.css">
+  <link rel="stylesheet" href="../static/fonts.css">
+  <link rel="stylesheet" href="../static/var.css">
+  <link rel="stylesheet" href="../static/global.css">
+  <style>
+    /* V2: Editorial, left-aligned hero, alternating rhythm */
+    body {
+      background-color: var(--light-gray);
+    }
+
+    .hero {
+      padding: var(--lead-6) var(--lead-2) var(--lead-4);
+      max-width: var(--grid-max-width);
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-4);
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .hero .tagline {
+      font-family: var(--serif-stack);
+      font-size: var(--txt-3);
+      font-style: italic;
+      margin-top: var(--lead-half);
+    }
+
+    .hero .description {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-1);
+      max-width: 36rem;
+      margin-top: var(--lead-2);
+      line-height: 1.4;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: var(--lead-2);
+      padding: var(--lead-half) var(--lead-1-half);
+      background-color: var(--green);
+      color: var(--white);
+      font-family: var(--sans-stack);
+      font-size: var(--txt-0);
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--lead-quarter);
+    }
+    .cta:visited {
+      color: var(--white);
+    }
+    .cta:hover,
+    .cta:focus {
+      background-color: var(--black);
+      color: var(--white);
+      outline: none;
+    }
+
+    .band {
+      background-color: var(--white);
+      padding: var(--lead-4) var(--lead-2);
+    }
+
+    .band-inner {
+      max-width: var(--grid-max-width);
+      margin: 0 auto;
+    }
+
+    .band h2 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      margin-bottom: var(--lead-2);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: var(--lead-2);
+    }
+
+    .step {
+      padding: var(--lead-1-half);
+      background-color: var(--light-gray);
+      border-radius: var(--lead-quarter);
+    }
+
+    .step-number {
+      font-family: var(--mono-stack);
+      font-size: var(--txt-2);
+      color: var(--dark-gray);
+      line-height: 1;
+      margin-bottom: var(--lead-half);
+    }
+
+    .step strong {
+      display: block;
+      font-family: var(--sans-stack);
+      font-size: var(--txt-1);
+      font-weight: 500;
+      margin-bottom: var(--lead-half);
+    }
+
+    .open-band {
+      padding: var(--lead-4) var(--lead-2);
+      max-width: var(--grid-max-width);
+      margin: 0 auto;
+    }
+
+    .open-band h2 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      margin-bottom: var(--lead-2);
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      gap: var(--lead-2);
+    }
+
+    .reason strong {
+      display: block;
+      font-family: var(--sans-stack);
+      font-size: var(--txt-1);
+      font-weight: 500;
+      margin-bottom: var(--lead-half);
+    }
+
+    .reason p {
+      line-height: 1.5;
+    }
+
+    .example-band {
+      background-color: var(--black);
+      color: var(--white);
+      padding: var(--lead-4) var(--lead-2);
+      text-align: center;
+    }
+
+    .example-band h2 {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      margin-bottom: var(--lead-1);
+    }
+
+    .example-band a {
+      color: var(--yellow);
+      font-family: var(--mono-stack);
+      font-size: var(--txt-1);
+    }
+    .example-band a:visited {
+      color: var(--yellow);
+    }
+    .example-band a:hover,
+    .example-band a:focus {
+      background-color: var(--yellow);
+      color: var(--black);
+      outline-color: var(--yellow);
+    }
+
+    .closing {
+      text-align: center;
+      padding: var(--lead-6) var(--lead-2);
+    }
+
+    .closing p {
+      font-family: var(--sans-stack);
+      font-size: var(--txt-2);
+      font-weight: 500;
+      margin-bottom: var(--lead-1);
+    }
+
+    footer {
+      text-align: center;
+      padding: var(--lead-2);
+      font-size: var(--txt--1);
+      color: var(--dark-gray);
+    }
+
+    footer a {
+      color: var(--dark-gray);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>url.coop</h1>
+    <p class="tagline">Links for everyone.</p>
+    <p class="description">A personal link page you actually own. Built on open, decentralized identity.</p>
+    <a class="cta" href="https://id.stucco.software/account/create">Claim your page</a>
+  </div>
+
+  <div class="band">
+    <div class="band-inner">
+      <h2>How it works</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <strong>Sign up</strong>
+          <p>Create a free account with Stucco ID. It takes a minute.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <strong>Add your links</strong>
+          <p>Your name, a short bio, and links to wherever you are online. Social profiles, email, websites — whatever matters to you.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <strong>Share your URL</strong>
+          <p>You get a page at url.coop/yourname. Put it in your bio, send it in a message, print it on a card.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="open-band">
+    <h2>Why url.coop</h2>
+    <div class="reasons-grid">
+      <div class="reason">
+        <strong>Your data, your rules</strong>
+        <p>Your profile lives on Stucco ID, a community-run identity provider. No ads. No tracking. No platform lock-in. You can move your data whenever you want.</p>
+      </div>
+      <div class="reason">
+        <strong>Built on open standards</strong>
+        <p>url.coop uses Solid and linked data under the hood. Your identity is portable — it works across any service that speaks the same protocols.</p>
+      </div>
+      <div class="reason">
+        <strong>Just your links</strong>
+        <p>One page. No algorithmic feed, no engagement tricks, no noise. A clean page with your name and your links.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-band">
+    <h2>See it in action</h2>
+    <p>Take a look at a live profile:</p>
+    <a href="https://url.coop/yves">url.coop/yves</a>
+  </div>
+
+  <div class="closing">
+    <p>Ready to claim yours?</p>
+    <a class="cta" href="https://id.stucco.software/account/create">Get started</a>
+  </div>
+
+  <footer>
+    A project by <a href="https://stucco.software">Stucco Software</a>.
+  </footer>
+
+</body>
+</html>

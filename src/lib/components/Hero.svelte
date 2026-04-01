@@ -11,7 +11,7 @@
         <b>everyone.</b>
     </h1>
     <p class="description">
-        A personal link page you actually own. Built on open, decentralized identity.
+        A personal link page you actually own.
     </p>
     <a class="cta" href="https://id.stucco.software/account/create">Claim your page</a>
   </div>

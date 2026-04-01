@@ -3,6 +3,11 @@
   const prop = (key) => data.profile[key] ? data.profile[key] : null
   console.log(data.profile)
 
+  const imageUrl = $derived(
+    data.profile?.image
+    || 'https://stucco.software/favicon.png'
+  )
+
   const urlifyMastodon = (handle) => {
     const arr = handle.split('@')
     return `https://${arr[2]}/@${arr[1]}`
@@ -24,7 +29,7 @@
     <figure>
       <img
         alt="Profile Image for {prop('displayName')}"
-        src="https://stucco.software/favicon.png">
+        src={imageUrl}>
     </figure>
 
     <header>
