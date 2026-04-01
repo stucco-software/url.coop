@@ -118,6 +118,10 @@
     line-height: 1.3;
   }
 
+  a {
+    word-break: break-all;
+  }
+
   footer {
     margin-top: var(--lead-4);
     text-align: center;
