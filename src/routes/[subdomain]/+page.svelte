@@ -41,25 +41,28 @@
 
     {#each data.profile.links as link}
       <section>
-        <h2>{link.label}</h2>
-        {#if link.mbox}
-          <a href="mailto:{link.mbox}">{link.mbox}</a>
-        {/if}
-        {#if link.href}
-          <a href="{link.href}">{link.href}</a>
-        {/if}
-        {#if link.handle}
-          {#if link.linkType === 'Mastodon'}
-            <a href="{urlifyMastodon(link.handle)}">{link.handle}</a>
+        <h2>
+          {#if link.mbox}
+            <a href="mailto:{link.mbox}">{link.label}</a>
           {/if}
-          {#if link.linkType === 'Bluesky'}
-            <a href="{urlifyBluesky(link.handle)}">{link.handle}</a>
+          {#if link.href}
+            <a href="{link.href}">{link.label}</a>
           {/if}
-        {/if}
+          {#if link.handle}
+            {#if link.linkType === 'Mastodon'}
+              <a href="{urlifyMastodon(link.handle)}">{link.handle}</a>
+            {/if}
+            {#if link.linkType === 'Bluesky'}
+              <a href="{urlifyBluesky(link.handle)}">{link.handle}</a>
+            {/if}
+          {/if}
+        </h2>
       </section>
     {/each}
 
     <footer>
+      <img src="{data.qr}">
+      <br>
       <a href="https://url.coop">url.coop</a>
     </footer>
   </div>
@@ -81,7 +84,7 @@
   .card {
     border: 1px solid var(--txt-color);
     background-color: var(--white);
-    max-width: 32rem;
+    max-width: 22rem;
     margin: auto;
     padding: var(--lead-2);
     border-radius: var(--lead-quarter);
@@ -126,5 +129,10 @@
     margin-top: var(--lead-4);
     text-align: center;
     font-size: var(--txt--1);
+  }
+
+  footer img {
+    margin: auto;
+    width: 3rem;
   }
 </style>

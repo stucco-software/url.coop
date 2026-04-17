@@ -17,6 +17,7 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
-		"jsonld": "^9.0.0"
+		"jsonld": "^9.0.0",
+		"qrcode": "^1.5.4"
 	}
 }
