@@ -2,15 +2,15 @@
   "@context": [
     "https://www.w3.org/ns/solid/oidc-context.jsonld"
   ],
-  "client_id": "https://solidid.stucco.software/client.json",
-  "client_name": "SolidID",
+  "client_id": "https://url.coop/client.json",
+  "client_name": "url.coop",
   "redirect_uris": [
     "http://localhost:5173/auth/confirm",
-    "https://solidid.stucco.software/auth/confirm"
+    "https://url.coop/auth/confirm"
   ],
   "post_logout_redirect_uris": [
     "http://localhost:5173",
-    "https://solidid.stucco.software"
+    "https://url.coop"
   ],
   "grant_types": [
     "authorization_code",
