@@ -17,7 +17,6 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
-		"@inrupt/solid-client-authn-browser": "^5.0.1",
 		"jsonld": "^9.0.0",
 		"n3": "^2.13.12",
 		"qrcode": "^1.5.4",

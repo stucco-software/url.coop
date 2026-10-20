@@ -13,7 +13,7 @@
     <p class="description">
         A personal link page you actually own.
     </p>
-    <a class="cta" href="https://id.stucco.software/account/create">Claim your page</a>
+    <a class="cta" href="https://id.stucco.software/register">Claim your page</a>
     <p class="signin">Already have one? <a href="/auth">Sign in</a></p>
   </div>
   <div class="hero-iframe">

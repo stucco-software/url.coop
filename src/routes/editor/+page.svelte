@@ -1,17 +1,20 @@
 <script>
   import { onMount } from 'svelte'
-  import { logout } from '@inrupt/solid-client-authn-browser'
-  import { PUBLIC_HOST } from "$env/static/public"
+  import { solidLogout } from '$lib/auth.js'
   import CopyToClipboard from "$lib/components/CopyToClipboard.svelte"
   import ProfileField from "$lib/components/ProfileField.svelte"
   import ProfileLinkPicker from "$lib/components/ProfileLinkPicker.svelte"
   import ProfileImage from "$lib/components/ProfileImage.svelte"
+  import ProfileCard from "$lib/components/ProfileCard.svelte"
   import { clientSession, clearSession } from "$lib/session.svelte.js"
   import { arrayify } from "$lib/helpers.js"
-  import { fetchProfileCard } from "$lib/profile.js"
+  import { fetchProfileCard, readProfileFresh } from "$lib/profile.js"
+  import { qrify } from "$lib/qr.js"
 
   let loading = $state(true)
   let loadError = $state(null)
+  let preview = $state(null)
+  let previewing = $state(false)
 
   let existingLinks = $derived.by(() => {
     if (!clientSession.profile || !clientSession.profile.links) return []
@@ -45,16 +48,50 @@
     }
   })
 
+  const openPreview = async () => {
+    previewing = true
+    loadError = null
+    try {
+      let [profile, qr] = await Promise.all([
+        readProfileFresh({
+          webid: clientSession.data.info.webId,
+          f: clientSession.data.fetch
+        }),
+        qrify(publicUrl)
+      ])
+      preview = { profile, qr }
+    } catch (e) {
+      loadError = e.body?.message || e.message || 'Could not load a preview'
+    } finally {
+      previewing = false
+    }
+  }
+
+  const closePreview = () => {
+    preview = null
+  }
+
+  const onKeydown = e => {
+    if (preview && e.key === 'Escape') closePreview()
+  }
+
   const signOut = async () => {
     clearSession()
-    await logout({ returnToUrl: PUBLIC_HOST })
+    await solidLogout('/')
   }
 </script>
+
+<svelte:window onkeydown={onKeydown} />
 
 <div class="card">
   <header>
     <h1>Edit your page</h1>
-    <button class="logout" onclick={signOut}>sign out</button>
+    <div class="actions">
+      <button onclick={openPreview} disabled={loading || previewing}>
+        {previewing ? 'loading…' : 'preview'}
+      </button>
+      <button onclick={signOut}>sign out</button>
+    </div>
   </header>
 
   {#if loadError}
@@ -134,6 +171,13 @@
   </footer>
 </div>
 
+{#if preview}
+  <div class="preview" role="dialog" aria-modal="true" aria-label="Preview of your page">
+    <ProfileCard profile={preview.profile} qr={preview.qr} />
+    <button class="close" onclick={closePreview}>close preview</button>
+  </div>
+{/if}
+
 <style>
   .card {
     border: 2px solid var(--txt-color);
@@ -153,13 +197,24 @@
     margin: 0;
     font-family: var(--sans-stack);
   }
-  .logout {
+  .actions {
+    display: flex;
+    gap: var(--lead-quarter);
+  }
+  .actions button, .close {
     font-size: var(--txt--1);
     font-family: var(--sans-stack);
     cursor: pointer;
     padding: var(--lead-quarter) var(--lead-half);
     background: transparent;
     border: 1px solid var(--txt-color);
+  }
+  .close {
+    position: fixed;
+    top: var(--lead-1);
+    right: var(--lead-1);
+    z-index: 1;
+    background: var(--white);
   }
   .loading, .error {
     padding: var(--lead-1);

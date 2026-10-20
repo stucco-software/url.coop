@@ -5,20 +5,28 @@
     PUBLIC_PROVIDER
   } from "$env/static/public"
 
-  import {
-    login
-  } from '@inrupt/solid-client-authn-browser'
+  import { solidLogin } from '$lib/auth.js'
 
   let customIssuer = $state('')
+  let error = $state(null)
+
+  const login = async issuer => {
+    error = null
+    try {
+      await solidLogin(issuer, {
+        clientId: PUBLIC_CLIENT_ID,
+        clientName: "url.coop",
+        redirectUri: `${PUBLIC_HOST}auth/confirm`,
+        returnTo: '/editor'
+      })
+    } catch (e) {
+      error = e.message || 'Could not start sign in'
+    }
+  }
 
   const startLogin = async (e) => {
     e.preventDefault()
-    await login({
-      clientID: PUBLIC_CLIENT_ID,
-      oidcIssuer: PUBLIC_PROVIDER,
-      redirectUrl: `${PUBLIC_HOST}auth/confirm`,
-      clientName: "url.coop"
-    })
+    await login(PUBLIC_PROVIDER)
   }
 
   const startCustomLogin = async (e) => {
@@ -26,17 +34,15 @@
     let issuer = customIssuer.trim()
     if (!issuer) return
     if (!issuer.startsWith('http')) issuer = `https://${issuer}`
-    await login({
-      clientID: PUBLIC_CLIENT_ID,
-      oidcIssuer: issuer,
-      redirectUrl: `${PUBLIC_HOST}auth/confirm`,
-      clientName: "url.coop"
-    })
+    await login(issuer)
   }
 </script>
 
 <div class="auth-container">
   <h1>Sign in to edit your page</h1>
+  {#if error}
+    <p class="error">{error}</p>
+  {/if}
   <button onclick={startLogin}>Sign In With Stucco ID</button>
   <form class="custom" onsubmit={startCustomLogin}>
     <label for="issuer">Or use another Solid identity provider</label>
@@ -83,6 +89,10 @@
     padding: var(--lead-half);
     font-size: var(--txt-0);
     font-family: var(--sans-stack);
+  }
+  .error {
+    color: var(--red, #c00);
+    font-size: var(--txt--1);
   }
   .secondary {
     background: transparent;

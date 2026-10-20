@@ -1,11 +1,7 @@
-import { handleIncomingRedirect } from '@inrupt/solid-client-authn-browser'
+import { initAuth } from '$lib/auth.js'
+import { setSession } from '$lib/session.svelte.js'
 
 export const init = async () => {
-  let path = window.location.href
-  if (!path.includes('auth/confirm')) {
-    localStorage.setItem('redirectTo', path)
-  }
-  await handleIncomingRedirect({
-    restorePreviousSession: true
-  })
+  let session = await initAuth()
+  if (session.info.isLoggedIn) setSession(session)
 }

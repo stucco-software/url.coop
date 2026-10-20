@@ -1,23 +1,16 @@
 <script>
   import { onMount } from 'svelte'
   import { goto } from "$app/navigation"
-  import { setSession } from "$lib/session.svelte.js"
-  import {
-    getDefaultSession
-  } from '@inrupt/solid-client-authn-browser'
+  import { clientSession } from "$lib/session.svelte.js"
+  import { takeReturnTo } from "$lib/auth.js"
 
-  onMount(async () => {
-    let session = getDefaultSession()
-    if (session.info.isLoggedIn) {
-      setSession(session)
-      let redirect = localStorage.getItem('redirectTo')
-      if (redirect && !redirect.includes('auth/confirm')) {
-        goto(redirect)
-      } else {
-        goto('/editor')
-      }
+  // hooks.client.js has already exchanged the code by the time we mount
+  onMount(() => {
+    let returnTo = takeReturnTo()
+    if (clientSession.data?.info?.isLoggedIn) {
+      goto(returnTo || '/editor', { replaceState: true })
     } else {
-      goto('/auth')
+      goto('/auth', { replaceState: true })
     }
   })
 </script>

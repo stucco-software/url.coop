@@ -211,6 +211,10 @@ export const readProfile = ({ webid, f = fetch }) => {
   return promise
 }
 
+// Uncached read in the public page's shape, so the editor can preview edits
+// that the 60s cache would otherwise hide.
+export const readProfileFresh = ({ webid, f = fetch }) => readProfileUncached(webid, f)
+
 // Authenticated read for the editor: preserves the raw stucco-vocabulary
 // shape (links as nodes with their own @ids) so existing values can be edited.
 export const fetchProfileCard = async ({ webid, f }) => {
